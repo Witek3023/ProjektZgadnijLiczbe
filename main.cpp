@@ -5,6 +5,12 @@
 #include <ctime>   // time()
 #include <algorithm> // sort()
 #include <fstream>  // file operations
+#include <cctype> // tolower()
+#ifdef _WIN32
+    #include <windows.h>    // sleep for windows
+#elif __linux__ || __APPLE__
+    #include <unistd.h>   // sleep for linux and macos
+#endif
 
 using namespace std;
 
@@ -21,7 +27,6 @@ vector<Results> Leaderboard;
 vector<string> tooMuch = {
     "Za duzo!",
     "Nie no tyle to nie!",
-    "Trochę za dużo!",
     "Sprobuj mniejsza liczbe!",
     "Twoja liczba jest za wysoka!",
     "Liczba jest zbyt duza!"};
@@ -40,6 +45,15 @@ void clearScreen() {
         std::system("clear");   // Linux && MacOS command
     #else
         std::cout << std::string(100, '\n');    // 100 new lines as fallback
+    #endif
+}
+
+// universal sleep function in miliseconds
+void universalSleep(int seconds) {
+    #ifdef _WIN32
+        Sleep(seconds); // Windows Sleep in milliseconds
+    #elif __linux__ || __APPLE__
+        usleep(seconds*1000);   // Linux and MacOS sleep in seconds
     #endif
 }
 
@@ -120,7 +134,7 @@ void Top5() {
     cin.get();
 }
 
-void startGame() {
+void mainGame(int betTries = 0, bool betMode = false) {
     int whichLevel;
     int maxNum = 0;
     string levelName = "";
@@ -171,8 +185,15 @@ void startGame() {
             if (stoi(guess) == randomNum) {
                 guessed = true;
                 cout << "\nGRATULACJE! Zgadles liczbe!" << endl;
-                
-                // Pobranie imienia i zapisanie wyniku
+                if (betMode) {
+                    if (triesCounter <= betTries) {
+                        cout << "Zgadles w wyznaczonej liczbie prob!" << endl;
+                    } else {
+                        cout << "Niestety, przekroczyles maksymalna liczbe prob." << endl;
+                        cout << "Twój wynik nie zostanie zapisany." << endl;
+                        return;
+                    }   
+                }
                 string playerName;
                 cout << "Podaj swoje imie: ";
                 cin >> playerName;
@@ -202,6 +223,67 @@ void startGame() {
         catch(...) {
             cout << "To nie liczba! Sprobuj ponownie." << endl;
         }
+    }
+}
+
+void betGame() {
+    int maxTries;
+    cout << "\n--- TRYB ZAKLADU ---" << endl;
+    cout << "Podaj maksymalna liczbe prob, ktora mozesz wykorzystac: ";
+    cin >> maxTries;
+    cout << "Masz " << maxTries << " prob na zgadniecie liczby." << endl;
+    cout << "Rozpoczynamy gre!" << endl;
+    mainGame(maxTries, true);
+}
+
+void startGame() {
+    char menu;
+    
+    do {
+        cout << "Czy chcesz rozpocząć grę w trybie zakładu? (t/n): ";
+        cin >> menu;
+        switch (tolower(menu)) {
+        case 't':
+            betGame();
+            break;
+        case 'n':
+            mainGame();
+            break;
+        default:
+            cout << "Niepoprawny wybór" << endl;
+            break;
+        }
+    } while (tolower(menu) != 't' && tolower(menu) != 'n');
+}
+
+void easterEgg() {
+    for (int i = 0; i < 10; i++) {
+        clearScreen();
+        cout << "Przygotuj sie na niespodzianke za " << 10 - i << " sekund..." << endl;
+        universalSleep(1000);
+    }
+    int count = 0;
+    clearScreen();
+    while (count <= 10) {
+        cout << R"(
+     .--.         /``'.
+    /wwww\ .---. |* *  \
+    |-=-=|/ ^ ^ `;--. *|
+    \wwww/\^ ^ ^/~~~~\.'       __
+     '--'  '----|    |       .'-=\
+          .'``\ \~~~~/ .-""-:=-=-=|
+         /   * | '--' /><><><\=-=/
+         |*   /   .-""-.<><></--'
+          '--'   /~*~*~*\---'
+                 \*~*~*~/
+                  '----'
+        )";
+        universalSleep(400);
+        clearScreen();
+        cout << "\tEaster Egg!\n";
+        universalSleep(400);
+        clearScreen();
+        count++;
     }
 }
 
@@ -239,7 +321,10 @@ int main() {
         case 0:
             cout << "Dzieki za gre!" << endl;
             break;
-
+        case 3: {
+            easterEgg();
+            break;
+        }
         default:
             cout << "Nieprawidlowa opcja." << endl;
             break;
