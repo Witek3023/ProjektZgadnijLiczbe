@@ -37,7 +37,7 @@ vector<string> tooLittle = {
     "Twoja liczba jest za niska!",
     "Liczba jest zbyt mala!"};
 
-// simple clear screen function dependent on OS
+// clear screen function dependent on OS
 void clearScreen() {
     #ifdef _WIN32
         std::system("cls");     // Windows command
@@ -48,7 +48,7 @@ void clearScreen() {
     #endif
 }
 
-// universal sleep function in miliseconds
+// sleep function in miliseconds dependent on OS
 void universalSleep(int seconds) {
     #ifdef _WIN32
         Sleep(seconds); // Windows Sleep in milliseconds
@@ -56,7 +56,6 @@ void universalSleep(int seconds) {
         usleep(seconds*1000);   // Linux and MacOS sleep in seconds
     #endif
 }
-
 
 bool compareResults(const Results& a, const Results& b) {
     return a.tries < b.tries;
@@ -104,7 +103,6 @@ void fromFile() {
     cout << "Wczytano " << Leaderboard.size() << " wynikow z pliku." << endl;
 }
 
-// Funkcja wyświetlająca TOP 5
 void Top5() {
     cout << "\n========================================" << endl;
     cout << "==        TOP 5 NAJLEPSZYCH WYNIKOW   ==" << endl;
@@ -316,7 +314,9 @@ int main() {
             startGame();
             break;
         case 2:
-            Top5();
+            if(!Leaderboard.empty()) {
+                Top5();
+            }
             break;
         case 0:
             cout << "Dzieki za gre!" << endl;

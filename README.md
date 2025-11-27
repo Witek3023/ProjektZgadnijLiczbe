@@ -31,6 +31,6 @@ podaje maksymalną liczbę prób w następnej rozgrywce
 - [x] zapis i wczytywanie wyników do pliku (nice to have)
 - [ ] animacje
 - [ ] try catch przy kazdym wyborze
-- [ ] brak top 5 w wyborze switch jesli nie ma top 5
+- [x] brak top 5 w wyborze switch jesli nie ma top 5
 - [ ] while w kazdym menu
 - [ ] nowy typ w result bool czy tryb zakladu
