@@ -23,9 +23,14 @@ Po wpisaniu imienia zostaniemy przekierowani do ekranu powitalnego
 
 ### Dodatkowo:
 
-- [ ] losowe komunikaty zamiast jednego stałego, gdy nie trafimy liczby
+- [x] losowe komunikaty zamiast jednego stałego, gdy nie trafimy liczby
 - [ ] ekran wyników podzielony na poziomy trudności, które możemy przełączać
 - [ ] tryb zakładu, o który zapyta gra po wybraniu poziomu trudności - jeśli tak, to gracz
 podaje maksymalną liczbę prób w następnej rozgrywce
 - [x] (poprawie)stwórz prymitywny "interfejs graficzny"
 - [x] zapis i wczytywanie wyników do pliku (nice to have)
+- [ ] animacje
+- [ ] try catch przy kazdym wyborze
+- [ ] brak top 5 w wyborze switch jesli nie ma top 5
+- [ ] while w kazdym menu
+- [ ] nowy typ w result bool czy tryb zakladu
