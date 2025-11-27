@@ -19,6 +19,7 @@ struct Results {
     string name;
     int tries;
     string level;
+    bool betMode;
 };
 
 // global results vector
@@ -70,7 +71,7 @@ void toFile() {
     }
     
     for (const auto& result : Leaderboard) {
-        file << result.name << " " << result.tries << " " << result.level << endl;    // write each result to file
+        file << result.name << " " << result.tries << " " << result.level << result.betMode << endl;    // write each result to file
     }
     
     file.close();
@@ -90,12 +91,14 @@ void fromFile() {
     string name;
     int tries;
     string level;
+    bool betMode;
     
-    while (file >> name >> tries >> level) {   // read each result from file
+    while (file >> name >> tries >> level >> betMode) {   // read each result from file
         Results result;
         result.name = name;
         result.tries = tries;
         result.level = level;
+        result.betMode = betMode;
         Leaderboard.push_back(result);
     }
     
@@ -114,7 +117,7 @@ void Top5() {
         // sort results
         sort(Leaderboard.begin(), Leaderboard.end(), compareResults);
 
-        cout << "Nr\tImie\t\tProby\tPoziom" << endl;
+        cout << "Nr\tImie\t\tProby\tPoziom\tTryb Zakladu" << endl;
         cout << "----------------------------------------" << endl;
         
         // Wyświetlamy max 5 wyników lub mniej, jeśli lista jest krótsza
@@ -124,7 +127,8 @@ void Top5() {
             cout << i + 1 << ".\t" 
                  << Leaderboard[i].name << "\t\t" 
                  << Leaderboard[i].tries << "\t" 
-                 << Leaderboard[i].level << endl;
+                 << Leaderboard[i].level << "\t\t"
+                 << (Leaderboard[i].betMode ? "Tak" : "Nie") << endl;
         }
     }
     cout << "\nNacisnij ENTER, aby wrocic do menu...";
@@ -133,6 +137,7 @@ void Top5() {
 }
 
 void mainGame(int betTries = 0, bool betMode = false) {
+    bool isBetMode = betMode;
     int whichLevel;
     int maxNum = 0;
     string levelName = "";
@@ -200,6 +205,7 @@ void mainGame(int betTries = 0, bool betMode = false) {
                 newResult.name = playerName;
                 newResult.tries = triesCounter;
                 newResult.level = levelName;
+                newResult.betMode = isBetMode;
                 Leaderboard.push_back(newResult);
 
                 cout << "Wynik zapisany! Wracamy do menu glownego..." << endl;
