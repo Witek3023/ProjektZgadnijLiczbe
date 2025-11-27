@@ -18,6 +18,20 @@ struct Results {
 // global results vector
 vector<Results> Leaderboard;
 
+vector<string> tooMuch = {
+    "Za duzo!",
+    "Nie no tyle to nie!",
+    "Trochę za dużo!",
+    "Sprobuj mniejsza liczbe!",
+    "Twoja liczba jest za wysoka!",
+    "Liczba jest zbyt duza!"};
+
+vector<string> tooLittle = {
+    "Za malo!",
+    "Sprobuj wieksza liczbe!",
+    "Twoja liczba jest za niska!",
+    "Liczba jest zbyt mala!"};
+
 // simple clear screen function dependent on OS
 void clearScreen() {
     #ifdef _WIN32
@@ -133,7 +147,7 @@ void startGame() {
             levelName = "Trudny";
             break;
         default:
-            cout << "Nieprawidlowy wybor. Ustawiono poziom Latwy (1-50)." << endl;
+            cout << "Niepraw1idlowy wybor. Ustawiono poziom Latwy (1-50)." << endl;
             maxNum = 50;
             levelName = "Latwy";
             break;
@@ -141,7 +155,7 @@ void startGame() {
 
     // Losowanie liczby
     int randomNum = rand() % maxNum + 1;
-    int guess;
+    string guess;
     int triesCounter = 0;
     bool guessed = false;
 
@@ -153,29 +167,40 @@ void startGame() {
         cout << "Proba nr " << triesCounter << ": Podaj liczbe: ";
         cin >> guess;
 
-        if (guess == randomNum) {
-            guessed = true;
-            cout << "\nGRATULACJE! Zgadles liczbe!" << endl;
-            
-            // Pobranie imienia i zapisanie wyniku
-            string playerName;
-            cout << "Podaj swoje imie: ";
-            cin >> playerName;
+        try {
+            if (stoi(guess) == randomNum) {
+                guessed = true;
+                cout << "\nGRATULACJE! Zgadles liczbe!" << endl;
+                
+                // Pobranie imienia i zapisanie wyniku
+                string playerName;
+                cout << "Podaj swoje imie: ";
+                cin >> playerName;
 
-            Results newResult;
-            newResult.name = playerName;
-            newResult.tries = triesCounter;
-            newResult.level = levelName;
-            Leaderboard.push_back(newResult);
+                Results newResult;
+                newResult.name = playerName;
+                newResult.tries = triesCounter;
+                newResult.level = levelName;
+                Leaderboard.push_back(newResult);
 
-            cout << "Wynik zapisany! Wracamy do menu glownego..." << endl;
-            toFile(); // Zapisz wynik do pliku
-        } 
-        else if (guess < randomNum) {
-            cout << "Za mala! Sprobuj wiekszej liczby." << endl;
-        } 
-        else {
-            cout << "Za duza! Sprobuj mniejszej liczby." << endl;
+                cout << "Wynik zapisany! Wracamy do menu glownego..." << endl;
+                toFile(); // Zapisz wynik do pliku
+            }
+            else if (stoi(guess) < 1 || stoi(guess) > maxNum) {
+                cout << "Liczba poza zakresem! Sprobuj ponownie." << endl;
+            } 
+            else if (stoi(guess) == randomNum + 1 || stoi(guess) == randomNum - 1) {
+                cout << "Już blisko!" << endl;
+            }
+            else if (stoi(guess) < randomNum) {
+                cout << tooLittle[rand() % tooLittle.size()] << endl;
+            } 
+            else {
+                cout << tooMuch[rand() % tooMuch.size()] << endl;
+            }
+        }
+        catch(...) {
+            cout << "To nie liczba! Sprobuj ponownie." << endl;
         }
     }
 }
@@ -208,7 +233,6 @@ int main() {
         case 1:
             startGame();
             break;
-        
         case 2:
             Top5();
             break;
