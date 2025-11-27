@@ -25,7 +25,7 @@ Po wpisaniu imienia zostaniemy przekierowani do ekranu powitalnego
 
 - [x] losowe komunikaty zamiast jednego stałego, gdy nie trafimy liczby
 - [ ] ekran wyników podzielony na poziomy trudności, które możemy przełączać
-- [ ] tryb zakładu, o który zapyta gra po wybraniu poziomu trudności - jeśli tak, to gracz
+- [x] tryb zakładu, o który zapyta gra po wybraniu poziomu trudności - jeśli tak, to gracz
 podaje maksymalną liczbę prób w następnej rozgrywce
 - [x] (poprawie)stwórz prymitywny "interfejs graficzny"
 - [x] zapis i wczytywanie wyników do pliku (nice to have)
