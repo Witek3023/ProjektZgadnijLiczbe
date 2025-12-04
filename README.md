@@ -33,4 +33,4 @@ podaje maksymalną liczbę prób w następnej rozgrywce
 - [ ] try catch przy kazdym wyborze
 - [x] brak top 5 w wyborze switch jesli nie ma top 5
 - [ ] while w kazdym menu
-- [ ] nowy typ w result bool czy tryb zakladu
+- [x] nowy typ w result bool czy tryb zakladu

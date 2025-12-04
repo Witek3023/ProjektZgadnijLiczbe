@@ -71,7 +71,7 @@ void toFile() {
     }
     
     for (const auto& result : Leaderboard) {
-        file << result.name << " " << result.tries << " " << result.level << result.betMode << endl;    // write each result to file
+        file << result.name << " " << result.tries << " " << result.level << " " << result.betMode << endl;    // write each result to file
     }
     
     file.close();
@@ -185,18 +185,17 @@ void mainGame(int betTries = 0, bool betMode = false) {
         cin >> guess;
 
         try {
+            if (betMode && triesCounter > betTries) {
+                cout << "Nie zgadles w wyznaczonej liczbie prob!" << endl;
+                cout << "Twój wynik nie zostanie zapisany." << endl;
+                universalSleep(5);
+                return;
+            }
+
             if (stoi(guess) == randomNum) {
                 guessed = true;
                 cout << "\nGRATULACJE! Zgadles liczbe!" << endl;
-                if (betMode) {
-                    if (triesCounter <= betTries) {
-                        cout << "Zgadles w wyznaczonej liczbie prob!" << endl;
-                    } else {
-                        cout << "Niestety, przekroczyles maksymalna liczbe prob." << endl;
-                        cout << "Twój wynik nie zostanie zapisany." << endl;
-                        return;
-                    }   
-                }
+
                 string playerName;
                 cout << "Podaj swoje imie: ";
                 cin >> playerName;
@@ -226,6 +225,9 @@ void mainGame(int betTries = 0, bool betMode = false) {
         }
         catch(...) {
             cout << "To nie liczba! Sprobuj ponownie." << endl;
+        }
+        if (betMode) {
+            cout << "Pozostalo prob: " << (betTries - triesCounter) << endl;
         }
     }
 }
