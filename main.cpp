@@ -197,7 +197,7 @@ void mainGame(int betTries = 0, bool betMode = false) {
             if (betMode && triesCounter > betTries) {
                 cout << "Nie zgadles w wyznaczonej liczbie prob!" << endl;
                 cout << "Twój wynik nie zostanie zapisany." << endl;
-                universalSleep(5);
+                universalSleep(1000);
                 return;
             }
 
@@ -242,13 +242,26 @@ void mainGame(int betTries = 0, bool betMode = false) {
 }
 
 void betGame() {
-    int maxTries;
+    string maxTries;
+
     cout << "\n--- TRYB ZAKLADU ---" << endl;
-    cout << "Podaj maksymalna liczbe prob, ktora mozesz wykorzystac: ";
-    cin >> maxTries;
+    do {
+        cout << "Podaj maksymalna liczbe prob, ktora mozesz wykorzystac: ";
+        cin >> maxTries;
+        try {
+            stoi(maxTries);
+        }
+        catch (...) {
+            maxTries = "-1";
+        }
+        if (stoi(maxTries) <= 0) {
+          cout << "To nie jest prawidlowa liczba. Sprobuj ponownie." << endl;
+        }
+    } while (stoi(maxTries) <= 0);
+
     cout << "Masz " << maxTries << " prob na zgadniecie liczby." << endl;
     cout << "Rozpoczynamy gre!" << endl;
-    mainGame(maxTries, true);
+    mainGame(stoi(maxTries), true);
 }
 
 void startGame() {

@@ -34,3 +34,4 @@ podaje maksymalną liczbę prób w następnej rozgrywce
 - [x] brak top 5 w wyborze switch jesli nie ma top 5
 - [x] while w kazdym menu
 - [x] nowy typ w result bool czy tryb zakladu
+- [ ] tryb zakladu, error enter liczba prob
