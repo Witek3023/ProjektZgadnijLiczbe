@@ -107,9 +107,9 @@ void fromFile() {
 }
 
 void Top5() {
-    cout << "\n========================================" << endl;
-    cout << "==        TOP 5 NAJLEPSZYCH WYNIKOW   ==" << endl;
-    cout << "========================================" << endl;
+    cout << "\n====================================================" << endl;
+    cout << "==            TOP 5 NAJLEPSZYCH WYNIKOW           ==" << endl;
+    cout << "====================================================" << endl;
 
     if (Leaderboard.empty()) {
         cout << "Brak zapisanych wynikow." << endl;
@@ -118,16 +118,16 @@ void Top5() {
         sort(Leaderboard.begin(), Leaderboard.end(), compareResults);
 
         cout << "Nr\tImie\t\tProby\tPoziom\tTryb Zakladu" << endl;
-        cout << "----------------------------------------" << endl;
+        cout << "----------------------------------------------------" << endl;
         
         // max 5 results, less if leaderboard has less than 5
         int toShow = Leaderboard.size() > 5 ? 5 : Leaderboard.size();
 
         for (int i = 0; i < toShow; i++) {
             cout << i + 1 << ".\t" 
-                 << Leaderboard[i].name << "\t\t" 
+                 << Leaderboard[i].name << "\t\t  " 
                  << Leaderboard[i].tries << "\t" 
-                 << Leaderboard[i].level << "\t\t"
+                 << Leaderboard[i].level << "\t   "
                  << (Leaderboard[i].betMode ? "Tak" : "Nie") << endl;
         }
     }
