@@ -120,7 +120,7 @@ void Top5() {
         cout << "Nr\tImie\t\tProby\tPoziom\tTryb Zakladu" << endl;
         cout << "----------------------------------------" << endl;
         
-        // Wyświetlamy max 5 wyników lub mniej, jeśli lista jest krótsza
+        // max 5 results, less if leaderboard has less than 5
         int toShow = Leaderboard.size() > 5 ? 5 : Leaderboard.size();
 
         for (int i = 0; i < toShow; i++) {
@@ -138,39 +138,48 @@ void Top5() {
 
 void mainGame(int betTries = 0, bool betMode = false) {
     bool isBetMode = betMode;
-    int whichLevel;
+    string whichLevel;
     int maxNum = 0;
     string levelName = "";
 
-    cout << "\n--- WYBIERZ POZIOM TRUDNOSCI ---" << endl;
-    cout << "1. Latwy (1-50)" << endl;
-    cout << "2. Sredni (1-100)" << endl;
-    cout << "3. Trudny (1-250)" << endl;
-    cout << "Wybor: ";
-    cin >> whichLevel;
+    do {
+        clearScreen();
+        cout << "\n--- WYBIERZ POZIOM TRUDNOSCI ---" << endl;
+        cout << "1. Latwy (1-50)" << endl;
+        cout << "2. Sredni (1-100)" << endl;
+        cout << "3. Trudny (1-250)" << endl;
+        cout << "Wybor: ";
+        cin >> whichLevel;
 
-    // Ustawienie zakresu w zależności od wyboru
-    switch (whichLevel) {
-        case 1:
-            maxNum = 50;
-            levelName = "Latwy";
-            break;
-        case 2:
-            maxNum = 100;
-            levelName = "Sredni";
-            break;
-        case 3:
-            maxNum = 250;
-            levelName = "Trudny";
-            break;
-        default:
-            cout << "Niepraw1idlowy wybor. Ustawiono poziom Latwy (1-50)." << endl;
-            maxNum = 50;
-            levelName = "Latwy";
-            break;
-    }
+        try {
+            // setting range depending on user choice
+            switch (stoi(whichLevel)) {
+                case 1:
+                    maxNum = 50;
+                    levelName = "Latwy";
+                    break;
+                case 2:
+                    maxNum = 100;
+                    levelName = "Sredni";
+                    break;
+                case 3:
+                    maxNum = 250;
+                    levelName = "Trudny";
+                    break;
+                default:
+                    cout << "Nieprawidłowa wartość. Sprobuj ponownie." << endl;
+                    universalSleep(1000);
+                    break;
+            }
+        }
+        catch (...) {
+            cout << "To nie jest prawidlowa opcja. Sprobuj ponownie." << endl;
+            universalSleep(1000);
+        }
+    } while (maxNum == 0);
+  
 
-    // Losowanie liczby
+    // choosing random number
     int randomNum = rand() % maxNum + 1;
     string guess;
     int triesCounter = 0;
@@ -178,7 +187,7 @@ void mainGame(int betTries = 0, bool betMode = false) {
 
     cout << "\nZaczynamy! Zgadnij liczbe z zakresu 1-" << maxNum << "." << endl;
 
-    // Pętla rozgrywki
+    // game loop
     while (!guessed) {
         triesCounter++;
         cout << "Proba nr " << triesCounter << ": Podaj liczbe: ";
@@ -201,7 +210,7 @@ void mainGame(int betTries = 0, bool betMode = false) {
                 cin >> playerName;
 
                 Results newResult;
-                newResult.name = playerName;
+                newResult.name = playerName.substr(0, 5);   //limit username to 5 characters
                 newResult.tries = triesCounter;
                 newResult.level = levelName;
                 newResult.betMode = isBetMode;
@@ -299,7 +308,7 @@ int main() {
     // read on start
     fromFile();
     
-    int menu;
+    string menu;
 
     do {
         clearScreen();
@@ -316,28 +325,35 @@ int main() {
         cout << "Twoj wybor: ";
         cin >> menu;
 
-        switch (menu)
-        {
-        case 1:
-            startGame();
-            break;
-        case 2:
-            if(!Leaderboard.empty()) {
-                Top5();
+        try {
+            switch (stoi(menu)) {
+                case 1:
+                    startGame();
+                    break;
+                case 2:
+                    if(!Leaderboard.empty()) {
+                        Top5();
+                    }
+                    break;
+                case 0:
+                    cout << "Dzieki za gre!" << endl;
+                    break;
+                case 3: {
+                    easterEgg();
+                    break;
+                }
+                default:
+                    cout << "To nie jest prawidlowa opcja. Sprobuj ponownie." << endl;
+                    universalSleep(1000);
+                    break;
             }
-            break;
-        case 0:
-            cout << "Dzieki za gre!" << endl;
-            break;
-        case 3: {
-            easterEgg();
-            break;
         }
-        default:
-            cout << "Nieprawidlowa opcja." << endl;
-            break;
+        catch (...) {
+            menu = "1";     //force loop continuation
+            cout << "To nie jest prawidlowa opcja. Sprobuj ponownie." << endl;
+            universalSleep(1000);
         }
-    } while (menu != 0);
+    } while (stoi(menu) != 0);
 
     // save results on exit
     toFile();

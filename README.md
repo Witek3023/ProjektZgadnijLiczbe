@@ -30,7 +30,7 @@ podaje maksymalną liczbę prób w następnej rozgrywce
 - [x] (poprawie)stwórz prymitywny "interfejs graficzny"
 - [x] zapis i wczytywanie wyników do pliku (nice to have)
 - [ ] animacje
-- [ ] try catch przy kazdym wyborze
+- [x] try-catch przy każdym wyborze     
 - [x] brak top 5 w wyborze switch jesli nie ma top 5
-- [ ] while w kazdym menu
+- [x] while w kazdym menu
 - [x] nowy typ w result bool czy tryb zakladu
