@@ -44,6 +44,7 @@ void fromFile();
 void Top5();
 
 // game
+void menu();
 void mainGame(int betTries = 0, bool betMode = false);
 void betGame();
 void startGame();
