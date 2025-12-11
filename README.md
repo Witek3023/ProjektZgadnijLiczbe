@@ -29,7 +29,7 @@ Po wpisaniu imienia zostaniemy przekierowani do ekranu powitalnego
 podaje maksymalną liczbę prób w następnej rozgrywce
 - [x] (poprawie)stwórz prymitywny "interfejs graficzny"
 - [x] zapis i wczytywanie wyników do pliku (nice to have)
-- [ ] animacje
+- [x] animacje
 - [x] try-catch przy każdym wyborze     
 - [x] brak top 5 w wyborze switch jesli nie ma top 5
 - [x] while w kazdym menu

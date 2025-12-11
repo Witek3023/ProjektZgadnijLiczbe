@@ -8,7 +8,7 @@ void mainGame(int betTries, bool betMode) {
 
     do {
         clearScreen();
-        cout << "\n--- WYBIERZ POZIOM TRUDNOSCI ---" << endl;
+        cout << "--- WYBIERZ POZIOM TRUDNOSCI ---" << endl;
         cout << "1. Latwy (1-50)" << endl;
         cout << "2. Sredni (1-100)" << endl;
         cout << "3. Trudny (1-250)" << endl;
@@ -49,6 +49,7 @@ void mainGame(int betTries, bool betMode) {
     int triesCounter = 0;
     bool guessed = false;
 
+    clearScreen();
     cout << "\nZaczynamy! Zgadnij liczbe z zakresu 1-" << maxNum << "." << endl;
 
     // game loop
@@ -107,9 +108,9 @@ void mainGame(int betTries, bool betMode) {
 
 void betGame() {
     string maxTries = "";
-
-    cout << "\n--- TRYB ZAKLADU ---" << endl;
     do {
+        clearScreen();
+        cout << "--- TRYB ZAKLADU ---" << endl;
         cout << "Podaj maksymalna liczbe prob, ktora mozesz wykorzystac: ";
         cin >> maxTries;
         try {
@@ -120,11 +121,13 @@ void betGame() {
         }
         if (stoi(maxTries) <= 0) {
             cout << "To nie jest prawidlowa liczba. Sprobuj ponownie." << endl;
+            universalSleep(1000);
         }
     } while (stoi(maxTries) <= 0);
 
     cout << "Masz " << maxTries << " prob na zgadniecie liczby." << endl;
     cout << "Rozpoczynamy gre!" << endl;
+    universalSleep(1000);
     mainGame(stoi(maxTries), true);
 }
 
@@ -132,6 +135,7 @@ void startGame() {
     char menu;
     
     do {
+        clearScreen();
         cout << "Czy chcesz rozpocząć grę w trybie zakładu? (t/n): ";
         cin >> menu;
         switch (tolower(menu)) {
