@@ -24,10 +24,13 @@ struct Results {
 	bool betMode;
 };
 
-//declatarion of global vectors;
+//declatarion of global variables;
 extern vector<Results> Leaderboard;
 extern vector<string> tooMuch;
 extern vector<string> tooLittle;
+extern string endColoring;
+extern string boldGreen;
+extern string greenTextYellowBG;
 
 bool compareResults(const Results& a, const Results& b);
 

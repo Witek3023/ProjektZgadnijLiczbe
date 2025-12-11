@@ -70,7 +70,7 @@ void mainGame(int betTries, bool betMode) {
                 cout << "\nGRATULACJE! Zgadles liczbe!" << endl;
 
                 string playerName;
-                cout << "Podaj swoje imie: ";
+                cout << "Podaj swoje imie (5znaków): ";
                 cin >> playerName;
 
                 Results newResult;

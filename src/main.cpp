@@ -10,18 +10,25 @@ int main() {
 
     do {
         clearScreen();
-        cout << "########################################" << endl;
-        cout << "#         GRA ZGADNIJ LICZBE           #" << endl;
-        cout << "########################################" << endl;
-        cout << "1. Rozpocznij nowa gre" << endl;
+        cout << greenTextYellowBG;
+        cout << " ######################################## " << endl;
+        cout << " #         GRA ZGADNIJ LICZBE           # " << endl;
+        cout << " ######################################## " << endl;
+        cout << " #                                      # " << endl;
+        cout << " #       [1] Rozpocznij nowa gre        # " << endl;
         
-        // Opcja TOP 5 widoczna tylko gdy są wyniki
+        // top 5 only when results available
         if (!Leaderboard.empty()) {
-            cout << "2. Sprawdz TOP 5" << endl;
+            cout << " #          [2] Sprawdz TOP 5           # " << endl;
         }
-        cout << "0. Wyjscie" << endl;
+        cout << " #             [0] Wyjscie              # " << endl;
+        cout << " #                                      # " << endl;
+        cout << " ######################################## " << endl;
+        cout << endColoring;
+        cout << boldGreen;
         cout << "Twoj wybor: ";
         cin >> menu;
+        cout << endColoring;
 
         try {
             switch (stoi(menu)) {

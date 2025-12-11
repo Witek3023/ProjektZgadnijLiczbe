@@ -6,31 +6,48 @@ bool compareResults(const Results& a, const Results& b) {
 }
 
 void Top5() {
-    cout << "\n====================================================" << endl;
-    cout << "==            TOP 5 NAJLEPSZYCH WYNIKOW           ==" << endl;
-    cout << "====================================================" << endl;
-
-    if (Leaderboard.empty()) {
-        cout << "Brak zapisanych wynikow." << endl;
-    } else {
-        // sort results
-        sort(Leaderboard.begin(), Leaderboard.end(), compareResults);
-
-        cout << "Nr\tImie\t\tProby\tPoziom\tTryb Zakladu" << endl;
-        cout << "----------------------------------------------------" << endl;
-        
-        // max 5 results, less if leaderboard has less than 5
-        int toShow = Leaderboard.size() > 5 ? 5 : Leaderboard.size();
-
-        for (int i = 0; i < toShow; i++) {
-            cout << i + 1 << ".\t" 
-                 << Leaderboard[i].name << "\t\t  " 
-                 << Leaderboard[i].tries << "\t" 
-                 << Leaderboard[i].level << "\t   "
-                 << (Leaderboard[i].betMode ? "Tak" : "Nie") << endl;
+    string input;
+    int times = 0;
+    while (times<5) {
+        clearScreen();
+        cout << greenTextYellowBG;
+        cout << "\n ==================================================== " << endl;
+        if (times % 2 == 0) {
+            cout << " |                   TOP 5 WYNIKOW                  | " << endl;
+        } else {
+            cout << " |                 NAJLEPSZE WYNIKI                 | " << endl;
         }
+        cout << " ==================================================== " << endl;
+
+        if (Leaderboard.empty()) {
+            cout << " Brak zapisanych wynikow. " << endl;
+        } else {
+            // sort results
+            sort(Leaderboard.begin(), Leaderboard.end(), compareResults);
+
+            cout << " Nr      Imie      Proby      Poziom     Tryb Zakladu " << endl;
+            cout << " ---------------------------------------------------- " << endl;
+            
+            // max 5 results, less if leaderboard has less than 5
+            int toShow = Leaderboard.size() > 5 ? 5 : Leaderboard.size();
+
+            for (int i = 0; i < toShow; i++) {
+                cout << " " << i + 1 << ".      " 
+                    << Leaderboard[i].name << "       " 
+                    << Leaderboard[i].tries << "        " 
+                    << Leaderboard[i].level << "             "
+                    << (Leaderboard[i].betMode ? "Tak" : "Nie") << "   " << endl;
+            }
+        }
+        cout << " ==================================================== " << endl;
+        cout << endColoring;
+        cout << boldGreen;
+        cout << "\nNacisnij ENTER, aby wrocic do menu...";
+        cout << endColoring;
+        
+        times++;
+        universalSleep(500);
     }
-    cout << "\nNacisnij ENTER, aby wrocic do menu...";
     cin.ignore();
     cin.get();
 }
