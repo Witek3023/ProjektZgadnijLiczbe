@@ -242,7 +242,7 @@ void mainGame(int betTries = 0, bool betMode = false) {
 }
 
 void betGame() {
-    string maxTries;
+    string maxTries = "";
 
     cout << "\n--- TRYB ZAKLADU ---" << endl;
     do {
@@ -255,7 +255,7 @@ void betGame() {
             maxTries = "-1";
         }
         if (stoi(maxTries) <= 0) {
-          cout << "To nie jest prawidlowa liczba. Sprobuj ponownie." << endl;
+            cout << "To nie jest prawidlowa liczba. Sprobuj ponownie." << endl;
         }
     } while (stoi(maxTries) <= 0);
 
