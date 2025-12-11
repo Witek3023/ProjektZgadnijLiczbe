@@ -1,9 +1,13 @@
+
 # ProjektZgadnijLiczbe
+
+## TODO
+
 Stworzyć grę "Zgadnij liczbę" w języku C++ uruchamianą w wierszu poleceń zgodnie z
 poniższymi wymaganiami.
 Projekt gra ma składać się z:
-- minimum jednego pliku .cpp,
-- readme.md z instrukcją do gry (uruchomienie, sterowanie, możliwości),
+- [x] minimum jednego pliku .cpp,
+- [ ] readme.md z instrukcją do gry (uruchomienie, sterowanie, możliwości),
 
 ### Wymagania:
 
