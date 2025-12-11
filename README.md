@@ -1,6 +1,8 @@
 
 # ProjektZgadnijLiczbe
 
+## HOW TO
+
 ## TODO
 
 Stworzyć grę "Zgadnij liczbę" w języku C++ uruchamianą w wierszu poleceń zgodnie z
