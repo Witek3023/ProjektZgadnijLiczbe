@@ -1,4 +1,4 @@
-#include "files.h"
+#include "global.h"
 
 void easterEgg() {
     for (int i = 0; i < 10; i++) {

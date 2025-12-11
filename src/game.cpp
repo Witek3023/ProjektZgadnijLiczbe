@@ -1,4 +1,4 @@
-#include "files.h"
+#include "global.h"
 
 void mainGame(int betTries, bool betMode) {
     bool isBetMode = betMode;

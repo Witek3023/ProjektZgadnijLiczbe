@@ -1,4 +1,4 @@
-#include "files.h"
+#include "global.h"
 
 void toFile() {
     ofstream file("wyniki.txt"); // create and write to file

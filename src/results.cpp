@@ -1,4 +1,4 @@
-#include "files.h"
+#include "global.h"
 
 // sorting results by tries
 bool compareResults(const Results& a, const Results& b) {

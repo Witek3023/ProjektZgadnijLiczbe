@@ -11,8 +11,8 @@
 #elif __linux__ || __APPLE__
     #include <unistd.h>   // sleep for linux and macos
 #endif
-#ifndef FILES_H
-#define FILES_H
+#ifndef GLOBAL_H
+#define GLOBAL_H
 
 using namespace std;
 
@@ -46,4 +46,4 @@ void betGame();
 void startGame();
 void easterEgg();
 
-#endif // FILES_H
+#endif // GLOBAL_H

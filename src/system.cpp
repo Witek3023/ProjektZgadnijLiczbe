@@ -1,4 +1,4 @@
-#include "files.h"
+#include "global.h"
 
 // clear screen function dependent on OS
 void clearScreen() {

@@ -1,4 +1,4 @@
-#include "files.h"
+#include "global.h"
 
 vector<Results> Leaderboard;
 
