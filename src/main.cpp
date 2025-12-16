@@ -6,7 +6,7 @@ int main() {
     // read on start
     fromFile();
     // display menu to start
-    void menu();
+    menu();
     // save results on exit
     toFile();
     return 0;

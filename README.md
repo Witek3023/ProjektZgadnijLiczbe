@@ -3,7 +3,8 @@
 
 ## HOW TO
 
-## TODO
+<details>
+<summary>TODO</summary>
 
 Stworzyć grę "Zgadnij liczbę" w języku C++ uruchamianą w wierszu poleceń zgodnie z
 poniższymi wymaganiami.
@@ -30,7 +31,7 @@ Po wpisaniu imienia zostaniemy przekierowani do ekranu powitalnego
 ### Dodatkowo:
 
 - [x] losowe komunikaty zamiast jednego stałego, gdy nie trafimy liczby
-- [ ] ekran wyników podzielony na poziomy trudności, które możemy przełączać
+- [x] ekran wyników podzielony na poziomy trudności, które możemy przełączać
 - [x] tryb zakładu, o który zapyta gra po wybraniu poziomu trudności - jeśli tak, to gracz
 podaje maksymalną liczbę prób w następnej rozgrywce
 - [x] (poprawie)stwórz prymitywny "interfejs graficzny"
@@ -41,3 +42,4 @@ podaje maksymalną liczbę prób w następnej rozgrywce
 - [x] while w kazdym menu
 - [x] nowy typ w result bool czy tryb zakladu
 - [x] tryb zakladu, error enter liczba prob
+</details>
