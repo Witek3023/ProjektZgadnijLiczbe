@@ -18,7 +18,7 @@ Gra oferuje:
 Gra "Zgadnij liczbę" napisana w języku C++ z interfejsem tekstowym. Celem gry jest odgadnięcie wylosowanej liczby w jak najmniejszej ilości prób.
 
 ## Instalacja i uruchomienie
-Kompilacja lub pobranie gotowych plików ze strony wydań [tutaj](https://github.com/Witek3023/ProjektZgadnijLiczbe/releases)
+Kompilacja lub pobranie gotowych plików [tutaj](https://github.com/Witek3023/ProjektZgadnijLiczbe/releases)
 
 ### 1. Klonowanie repozytorium
 ```bash
