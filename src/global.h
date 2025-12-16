@@ -24,7 +24,7 @@ struct Results {
 	bool betMode;
 };
 
-//declatarion of global variables;
+// declaration of global variables
 extern vector<Results> Leaderboard;
 extern vector<string> tooMuch;
 extern vector<string> tooLittle;

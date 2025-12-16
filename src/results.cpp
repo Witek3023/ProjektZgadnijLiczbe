@@ -32,14 +32,13 @@ void Top5() {
 
         if (filtered.empty()) {
             cout << " Brak zapisanych wynikow dla tego poziomu. " << endl;
-
         } else {
             // sort results
             sort(filtered.begin(), filtered.end(), compareResults);
 
             cout << " Nr      Imie      Proby      Poziom     Tryb Zakladu " << endl;
             cout << " ---------------------------------------------------- " << endl;
-            
+
             // max 5 results, less if leaderboard has less than 5
             int toShow = filtered.size() > 5 ? 5 : filtered.size();
 
@@ -59,7 +58,7 @@ void Top5() {
         cout << boldGreen;
         cout << "\n[A] Poprzedni poziom   [D] Nastepny poziom   [ENTER] Powrot\n";
         cout << endColoring;
-        
+
         // Clear input buffer and read character
         cin.ignore();
         char choice = cin.get();
