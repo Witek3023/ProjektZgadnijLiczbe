@@ -117,7 +117,7 @@ Stworzyć grę "Zgadnij liczbę" w języku C++ uruchamianą w wierszu poleceń z
 poniższymi wymaganiami.
 Projekt gra ma składać się z:
 - [x] minimum jednego pliku .cpp,
-- [ ] readme.md z instrukcją do gry (uruchomienie, sterowanie, możliwości),
+- [x] readme.md z instrukcją do gry (uruchomienie, sterowanie, możliwości),
 
 ### Wymagania:
 
